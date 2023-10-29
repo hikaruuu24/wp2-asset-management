@@ -1,0 +1,13 @@
+GET /kategori: This URL will invoke the index method in your "Kategori" controller, which typically displays a list of kategori resources.
+
+GET /kategori/1: This URL will invoke the show method in your "Kategori" controller, passing "1" as the parameter. It typically displays the details of the kategori with ID 1.
+
+GET /kategori/create: This URL will invoke the create method in your "Kategori" controller, which usually displays a form for creating a new kategori resource.
+
+POST /kategori: This URL will invoke the store method in your "Kategori" controller when you submit a form to create a new kategori resource.
+
+GET /kategori/1/edit: This URL will invoke the edit method in your "Kategori" controller, allowing you to edit the kategori with ID 1.
+
+PUT/PATCH /kategori/1: These HTTP methods will invoke the update method in your "Kategori" controller to update the kategori with ID 1.
+
+DELETE /kategori/1: This URL will invoke the delete method in your "Kategori" controller to delete the kategori with ID 1.
