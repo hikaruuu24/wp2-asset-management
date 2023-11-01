@@ -15,7 +15,7 @@
                         <div class="col-sm-12">
                             <div class="mb-3">
                                 <label for="email">Email</label>
-                                <input id="email" name="email" type="text" class="form-control" placeholder="Email" value="<?= old('email') ?>">
+                                <input id="email" name="email" type="email" class="form-control" placeholder="Email" value="<?= old('email') ?>">
                             </div>
                             <div class="mb-3">
                                 <label for="username">Username</label>

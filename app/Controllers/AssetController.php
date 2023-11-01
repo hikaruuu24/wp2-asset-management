@@ -13,7 +13,11 @@ class AssetController extends BaseController
     {
         $data['title'] = 'Asset List';
         $asset = new Asset();
-        $data['assets'] = $asset->findAll();
+        // join type, category table
+        $data['assets'] = $asset->select('asset.*, type.name as type_name, category.name as category_name')
+                                ->join('type', 'type.id = asset.type_id')
+                                ->join('category', 'category.id = asset.category_id')
+                                ->findAll();
         return view('assets/index', $data);
     }
 
@@ -30,30 +34,28 @@ class AssetController extends BaseController
 
     public function store() {
 
-        
         // validation email,username,password,repeat password, role
         $validationRules = $this->validate([
-            'name'    =>'required|min_length[3]|is_unique[assets.name]',
+            'name'    =>'required|min_length[3]',
             'type'    =>'required',
             'category'    =>'required',
-            'description'    =>'nullable',
-            'price'    =>'nullable',
-            'purchase_date'    =>'nullable',
-            'image'    =>'uploaded[image]|max_size[image,1024]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]',
+            'image'    =>'max_size[image,1024]|is_image[image]|mime_in[image,image/jpg,image/jpeg,image/png]',
         ]);
-
+        
         if (!$validationRules) {
             $validation = \Config\Services::validation();
             // Redirect back to the edit form with the ID
             return redirect()->to('/asset/create')->withInput();
-        } else {
-            $fileImage = $this->request->getFile('image');
-            if ($fileImage->getError() == 4) {
-                $imageName = 'default.png';
-            } else {
+        } 
+
+            if ($this->request->getFile('image')->isValid()) {
+                $fileImage = $this->request->getFile('image');
                 $imageName = $fileImage->getRandomName();
                 $fileImage->move('assets/images/pictures', $imageName);
+            } else {
+                $imageName = 'default.png';
             }
+            
             $asset = new Asset();
             $asset->insert([
                 'name' => $this->request->getPost('name'),
@@ -63,10 +65,11 @@ class AssetController extends BaseController
                 'price' => $this->request->getPost('price'),
                 'purchase_date' => $this->request->getPost('purchase_date'),
                 'image' => $imageName,
+                'timestamp' => date('Y-m-d H:i:s')
             ]);
             session()->setFlashdata('message', 'Asset has been created successfully.');
             return redirect()->to('/asset');
-        }
+        
     }
 
     public function delete($id) {

@@ -45,7 +45,7 @@
                                 <td><?= $data['type_name'] ?></td>
                                 <td><?= $data['price'] ?></td>
                                 <td><?= $data['purchase_date'] ?></td>
-                                <td><img src=<?= base_url('assets/images/pictures/'.$data['image']) ?>></td>
+                                <td><img src=<?= base_url('assets/images/pictures/'.$data['image']) ?> style="max-width:50px;"></td>
                                 <td>
                                     <div class="btn-group-sm">
                                         <a href="<?= route_to('asset_edit', $data['id']) ?>"
