@@ -53,6 +53,11 @@
                                             <i class="far fa-edit"></i>
                                             Edit
                                         </a>
+                                        <a href="<?= route_to('asset_show', $data['id']) ?>"
+                                            class="btn btn-primary text-white">
+                                            <i class="far fa-eye"></i>
+                                            Detail
+                                        </a>
                                         <a href="#" onclick="modalDelete('Asset', '<?= $data['name'] ?>', 'asset/<?= $data['id'] ?>', '<?= route_to('asset_list') ?>')" class="btn btn-danger f-12">
                                             <i class="far fa-trash-alt"></i>
                                             Delete
