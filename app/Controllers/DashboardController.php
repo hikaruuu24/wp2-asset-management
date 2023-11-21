@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use Myth\Auth\Models\UserModel;
 use App\Models\Asset;
+use App\Models\Maintenance;
 
 class DashboardController extends BaseController
 {
@@ -12,9 +13,12 @@ class DashboardController extends BaseController
     {
         $user = new UserModel();
         $asset = new Asset();
+        $maintenance = new Maintenance();
         $data['title'] = 'Dashboard';
         $data['total_users'] = $user->countAll();
         $data['total_assets'] = $asset->countAll();
+        $data['total_maintenances'] = $maintenance->countAll();
+
 
         return view('dashboard/index', $data);
     }

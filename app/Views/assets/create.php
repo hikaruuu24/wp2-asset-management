@@ -22,7 +22,7 @@
                                 <select class="form-select" name="category" id="category">
                                     <option disabled selected>Select Category</option>
                                     <?php foreach ($categories as $category): ?>
-                                    <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                                    <option value="<?= $category['id'] ?>" <?= ($category['id'] == old('category') ? 'selected' : '') ?>><?= $category['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -31,7 +31,7 @@
                                 <select class="form-select" name="type" id="type">
                                     <option disabled selected>Select Type</option>
                                     <?php foreach ($types as $type): ?>
-                                    <option value="<?= $type['id'] ?>"><?= $type['name'] ?></option>
+                                    <option value="<?= $type['id'] ?>" <?= ($type['id'] == old('type') ? 'selected' : '') ?>><?= $type['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>

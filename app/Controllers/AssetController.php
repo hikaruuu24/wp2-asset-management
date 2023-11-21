@@ -19,7 +19,6 @@ class AssetController extends BaseController
         ->join('category', 'category.id = asset.category_id')
         ->orderBy('timestamp', 'DESC')
         ->findAll();
-        
         return view('assets/index', $data);
     }
 

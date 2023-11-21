@@ -20,7 +20,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="chat.html" class="waves-effect">
+                                <a href="<?= route_to('maintenance_list') ?>" class="waves-effect">
                                     <i class="bx bx-task"></i>
                                     <span key="t-maintenance">Maintenance</span>
                                 </a>

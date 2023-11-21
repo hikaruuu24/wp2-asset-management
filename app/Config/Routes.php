@@ -49,6 +49,15 @@ $routes->put('asset/(:num)', 'AssetController::update/$1', ['as' => 'asset_updat
 $routes->delete('asset/(:num)', 'AssetController::delete/$1', ['as' => 'asset_delete']);
 $routes->get('asset/(:num)', 'AssetController::show/$1', ['as' => 'asset_show']);
 
+// MAINTENANCE
+$routes->get('maintenance', 'MaintenanceController::index', ['as' => 'maintenance_list']);
+$routes->get('maintenance/create', 'MaintenanceController::create', ['as' => 'maintenance_create']);
+$routes->post('maintenance', 'MaintenanceController::store', ['as' => 'maintenance_store']);
+$routes->get('maintenance/edit/(:num)', 'MaintenanceController::edit/$1', ['as' => 'maintenance_edit']);
+$routes->put('maintenance/(:num)', 'MaintenanceController::update/$1', ['as' => 'maintenance_update']);
+$routes->delete('maintenance/(:num)', 'MaintenanceController::delete/$1', ['as' => 'maintenance_delete']);
+$routes->get('maintenance/(:num)', 'MaintenanceController::show/$1', ['as' => 'maintenance_show']);
+
 // CATEGORY
 $routes->get('category', 'CategoryController::index', ['as' => 'category_list']);
 $routes->get('category/create', 'CategoryController::create', ['as' => 'category_create']);

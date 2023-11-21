@@ -34,7 +34,7 @@
                 <div class="d-flex">
                     <div class="flex-grow-1">
                         <p class="text-muted fw-medium">Maintenance</p>
-                        <h4 class="mb-0">$35, 723</h4>
+                        <h4 class="mb-0"><?= $total_maintenances ?></h4>
                     </div>
 
                     <div class="flex-shrink-0 align-self-center ">
