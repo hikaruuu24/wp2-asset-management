@@ -40,6 +40,11 @@
                                 <label for="completion_date" class="form-label">Estimation Completion Date</label>
                                 <input type="date"  name="completion_date" class="form-control" value="<?= date('Y-m-d', strtotime($maintenance['completion_date'])) ?>">
                             </div>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
+                                <!-- <button type="button" class="btn btn-secondary waves-effect waves-light">Cancel</button> -->
+                                <a href="<?=route_to('maintenance_list')?>" class="btn btn-secondary waves-effect waves-light">Cancel</a>
+                            </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
@@ -60,17 +65,22 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3" style="height: 300px; overflow-y: auto;">
                                 <label for="task">Task Maintenance</label>
-                                <textarea id="task" name="task" class="form-control" rows="4" placeholder="Task Maintenance"><?= $maintenance['task'] ?></textarea>
+                                <?php foreach ($maintenance['maintenance_tasks'] as $key => $task): ?>
+                                    <div class="input-group mb-2" id="input-group-task">
+                                        <input type="text" class="form-control" name="tasks[]"  aria-describedby="inputGroupFileAddon04" placeholder="Input task" aria-label="Upload" value="<?= $task['task'] ?>">
+                                        <?php if ($key == 0): ?>
+                                            <button class="btn btn-primary" type="button" id="btn-add-task" onclick="addField()"><i class="bx bx-plus-circle"></i></button>
+                                        <?php else: ?>
+                                            <button class="btn btn-danger" type="button" id="btn-remove-task"><i class="bx bx-minus-circle"></i></button>
+                                        <?php endif; ?>
+                                    </div> 
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-wrap gap-2">
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
-                        <!-- <button type="button" class="btn btn-secondary waves-effect waves-light">Cancel</button> -->
-                        <a href="<?=route_to('maintenance_list')?>" class="btn btn-secondary waves-effect waves-light">Cancel</a>
-                    </div>
+                    
                 </form>
 
             </div>

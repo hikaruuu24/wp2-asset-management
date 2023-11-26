@@ -3,25 +3,20 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header bg-dark" style="border-radius:15px 15px 0px 0px;">
+                <div class=" d-flex justify-content-end mb-2">
+                    <a href="<?=route_to('asset_create')?>" class="btn btn-md btn-info">
+                        <i class="fa fa-plus"></i> 
+                        Create record
+                    </a>
+                </div> 
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-6">
+                <?php if (session()->getFlashdata('message')): ?>
+                    <div class="alert alert-info">
+                        <?= session()->getFlashdata('message') ?>
                     </div>
-                    <div class="col-6 d-flex justify-content-end mb-2">
-                        <a href="<?=route_to('asset_create')?>" class="btn btn-md btn-info">
-                            <i class="fa fa-plus"></i> 
-                            Create record
-                        </a>
-                    </div>  
-                    <hr>
-                    <?php if (session()->getFlashdata('message')): ?>
-                        <div class="alert alert-info">
-                            <?= session()->getFlashdata('message') ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
+                <?php endif; ?>
                 <table id="generalTable" class="table table-bordered table-striped dt-responsive nowrap w-100">
                     <thead class="table-light">
                     <tr>

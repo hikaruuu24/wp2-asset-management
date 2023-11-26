@@ -19,7 +19,12 @@ class DashboardController extends BaseController
         $data['total_assets'] = $asset->countAll();
         $data['total_maintenances'] = $maintenance->countAll();
 
-
+        $data['maintenances'] = $maintenance->select('maintenance.*, asset.name as asset_name, users.username as user_name, role.name as role_name')
+        ->join('asset', 'asset.id = maintenance.asset_id')
+        ->join('users', 'users.id = maintenance.user_id')
+        ->join('role', 'role.id = users.role_id')
+        ->where('maintenance.status', 'open')
+        ->findAll();
         return view('dashboard/index', $data);
     }
     

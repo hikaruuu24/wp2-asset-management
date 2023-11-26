@@ -39,6 +39,11 @@
                                 <label for="completion_date" class="form-label">Estimation Completion Date</label>
                                 <input type="date"  name="completion_date" class="form-control">
                             </div>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
+                                <!-- <button type="button" class="btn btn-secondary waves-effect waves-light">Cancel</button> -->
+                                <a href="<?=route_to('maintenance_list')?>" class="btn btn-secondary waves-effect waves-light">Cancel</a>
+                            </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
@@ -59,17 +64,16 @@
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3" style="height: 300px; overflow-y: auto;">
                                 <label for="task">Task Maintenance</label>
-                                <textarea id="task" name="task" class="form-control" rows="4" placeholder="Task Maintenance"><?= old('task') ?></textarea>
+                                <div class="input-group" id="input-group-task" >
+                                    <input type="text" class="form-control" name="tasks[]"  aria-describedby="inputGroupFileAddon04" placeholder="Input task" aria-label="Upload">
+                                    <button class="btn btn-primary" type="button" id="btn-add-task" onclick="addField()"><i class="bx bx-plus-circle"></i></button>
+                                </div> 
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-wrap gap-2">
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
-                        <!-- <button type="button" class="btn btn-secondary waves-effect waves-light">Cancel</button> -->
-                        <a href="<?=route_to('maintenance_list')?>" class="btn btn-secondary waves-effect waves-light">Cancel</a>
-                    </div>
+                    
                 </form>
 
             </div>
@@ -77,3 +81,4 @@
     </div>
 </div>
 <?= $this->endSection(); ?>
+

@@ -79,39 +79,49 @@
                         <thead class="table-light">
                             <tr>
                                 <th class="align-middle">No</th>
-                                <th class="align-middle">Order ID</th>
-                                <th class="align-middle">Billing Name</th>
-                                <th class="align-middle">Date</th>
-                                <th class="align-middle">Total</th>
-                                <th class="align-middle">Payment Status</th>
-                                <th class="align-middle">Payment Method</th>
+                                <th class="align-middle">Name</th>
+                                <th class="align-middle">Asset</th>
+                                <th class="align-middle">Status</th>
+                                <th class="align-middle">Priority</th>
+                                <th class="align-middle">Completion Date</th>
+                                <th class="align-middle">User Technical</th>
                                 <th class="align-middle">View Details</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php 
+                                $no = 1; 
+                                foreach ($maintenances as $maintenance) :
+                            ?>
                             <tr>
-                                <td>1</td>
-                                <td><a href="javascript: void(0);" class="text-body fw-bold">#SK2540</a> </td>
-                                <td>Neal Matthews</td>
+                                <td><?= $no++ ?></td>
+                                <td><?= $maintenance['name'] ?></td>
+                                <td><?= $maintenance['asset_name'] ?></td>
                                 <td>
-                                    07 Oct, 2019
+                                    <?php if ($maintenance['status'] == 'complete'): ?>
+                                       <span class="badge bg-success"><?= ucfirst($maintenance['status']) ?></span> 
+                                    <?php elseif ($maintenance['status'] == 'draft'): ?>
+                                       <span class="badge bg-warning"><?= ucfirst($maintenance['status']) ?></span> 
+                                    <?php elseif ($maintenance['status'] == 'open'): ?>
+                                       <span class="badge bg-primary"><?= ucfirst($maintenance['status']) ?></span> 
+                                    <?php endif; ?>
                                 </td>
                                 <td>
-                                    $400
+                                    <?php if ($maintenance['priority'] == 'low'): ?>
+                                       <span class="badge bg-primary"><?= ucfirst($maintenance['priority']) ?></span> 
+                                    <?php elseif ($maintenance['priority'] == 'medium'): ?>
+                                       <span class="badge bg-warning"><?= ucfirst($maintenance['priority']) ?></span> 
+                                    <?php elseif ($maintenance['priority'] == 'high'): ?>
+                                       <span class="badge bg-danger"><?= ucfirst($maintenance['priority']) ?></span> 
+                                    <?php endif; ?>
                                 </td>
+                                <td><?= $maintenance['completion_date'] ?></td>
+                                <td><?= $maintenance['user_name'] ?></td>
                                 <td>
-                                    <span class="badge badge-pill badge-soft-success font-size-11">Paid</span>
-                                </td>
-                                <td>
-                                    <i class="fab fa-cc-mastercard me-1"></i> Mastercard
-                                </td>
-                                <td>
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".transaction-detailModal">
-                                        View Details
-                                    </button>
+                                    <a href="<?= route_to('maintenance_show', $maintenance['id']) ?>" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light">View Details</a>
                                 </td>
                             </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

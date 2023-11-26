@@ -57,6 +57,10 @@ $routes->get('maintenance/edit/(:num)', 'MaintenanceController::edit/$1', ['as' 
 $routes->put('maintenance/(:num)', 'MaintenanceController::update/$1', ['as' => 'maintenance_update']);
 $routes->delete('maintenance/(:num)', 'MaintenanceController::delete/$1', ['as' => 'maintenance_delete']);
 $routes->get('maintenance/(:num)', 'MaintenanceController::show/$1', ['as' => 'maintenance_show']);
+$routes->put('maintenance/document/(:num)', 'MaintenanceController::uploadDocument/$1', ['as' => 'maintenance_document']);
+
+// REPORT
+$routes->get('report-maintenance', 'ReportMaintenanceController::index', ['as' => 'report_list']);
 
 // CATEGORY
 $routes->get('category', 'CategoryController::index', ['as' => 'category_list']);

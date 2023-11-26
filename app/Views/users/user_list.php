@@ -43,7 +43,7 @@
                                             Edit
                                         </a> -->
                                         <?php if (user()->id != $data->id): ?>
-                                            <?php if ($data->role_name == 'User Technical'): ?>
+                                            <?php if ($data->role_name == 'user technical'): ?>
                                             <a href="#" onclick="modalDelete('User', '<?= $data->username ?>', 'user/<?= $data->id ?>', '<?= route_to('user_list') ?>')" class="btn btn-danger f-12">
                                                 <i class="far fa-trash-alt"></i>
                                                 Delete

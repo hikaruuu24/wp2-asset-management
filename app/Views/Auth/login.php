@@ -20,6 +20,9 @@
         <style>
             body {
                 background-image: url(<?= base_url('assets/images/login/loginBackground.jpg')?>);
+                background-size:     cover;                     
+                background-repeat:   no-repeat;
+                background-position: center center; 
             }
         </style>
     </head>
