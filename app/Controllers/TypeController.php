@@ -33,7 +33,8 @@ class TypeController extends BaseController
 
         if (!$validationRules) {
             $validation = \Config\Services::validation();
-            // Redirect back to the edit form with the ID
+            session()->setFlashdata('message', $validation->getErrors());
+
             return redirect()->to("/type/create")->withInput();
         }
         
@@ -68,7 +69,8 @@ class TypeController extends BaseController
 
         if (!$validationRules) {
             $validation = \Config\Services::validation();
-            // Redirect back to the edit form with the ID
+            session()->setFlashdata('message', $validation->getErrors());
+
             return redirect()->to("/type/edit/$id")->withInput();
         }
 

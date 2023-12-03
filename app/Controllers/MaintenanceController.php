@@ -45,7 +45,8 @@ class MaintenanceController extends BaseController
         
         if (!$validationRules) {
             $validation = \Config\Services::validation();
-            // Redirect back to the edit form with the ID
+            session()->setFlashdata('message', $validation->getErrors());
+
             return redirect()->to('/maintenance/create')->withInput();
         }
         
@@ -128,7 +129,8 @@ class MaintenanceController extends BaseController
         
         if (!$validationRules) {
             $validation = \Config\Services::validation();
-            // Redirect back to the edit form with the ID
+            session()->setFlashdata('message', $validation->getErrors());
+
             return redirect()->to('/maintenance/edit/'.$id)->withInput();
         }
         

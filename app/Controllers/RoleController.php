@@ -34,7 +34,7 @@ class RoleController extends BaseController
 
         if (!$validationRules) {
             $validation = \Config\Services::validation();
-            // Redirect back to the edit form with the ID
+            session()->setFlashdata('message', $validation->getErrors());
             return redirect()->to("/role/create")->withInput();
         }
         
@@ -69,7 +69,7 @@ class RoleController extends BaseController
 
         if (!$validationRules) {
             $validation = \Config\Services::validation();
-            // Redirect back to the edit form with the ID
+            session()->setFlashdata('message', $validation->getErrors());
             return redirect()->to("/role/edit/$id")->withInput();
         }
 

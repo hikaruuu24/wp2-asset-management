@@ -75,7 +75,7 @@
             <div class="card-body">
                 <h4 class="card-title mb-4">Maintenance not complete</h4>
                 <div class="table-responsive">
-                    <table class="table align-middle table-nowrap mb-0">
+                    <table id="generalTable" class="table align-middle table-nowrap mb-0">
                         <thead class="table-light">
                             <tr>
                                 <th class="align-middle">No</th>

@@ -56,7 +56,8 @@ class AssetController extends BaseController
         
         if (!$validationRules) {
             $validation = \Config\Services::validation();
-            // Redirect back to the edit form with the ID
+            session()->setFlashdata('message', $validation->getErrors());
+
             return redirect()->to('/asset/create')->withInput();
         } 
 
@@ -111,7 +112,8 @@ class AssetController extends BaseController
         
         if (!$validationRules) {
             $validation = \Config\Services::validation();
-            // Redirect back to the edit form with the ID
+            session()->setFlashdata('message', $validation->getErrors());
+
             return redirect()->to('/asset/edit/' . $id)->withInput();
         } 
 

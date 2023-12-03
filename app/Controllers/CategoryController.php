@@ -21,6 +21,7 @@ class CategoryController extends BaseController
         $data['title'] = 'Create Category';
         $data['validation'] = \Config\Services::validation();
         return view('master-data/categories/create', $data);
+
     }
 
     public function store() {
@@ -33,8 +34,8 @@ class CategoryController extends BaseController
 
         if (!$validationRules) {
             $validation = \Config\Services::validation();
-            // Redirect back to the edit form with the ID
-            return redirect()->to("/category/create")->withInput();
+            session()->setFlashdata('message', $validation->getErrors());
+            return redirect()->to('/category/create')->withInput();
         }
         
         $model = new Category();
@@ -68,7 +69,7 @@ class CategoryController extends BaseController
 
         if (!$validationRules) {
             $validation = \Config\Services::validation();
-            // Redirect back to the edit form with the ID
+            session()->setFlashdata('message', $validation->getErrors());
             return redirect()->to("/category/edit/$id")->withInput();
         }
 

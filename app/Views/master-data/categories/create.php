@@ -5,8 +5,14 @@
         <div class="card">
             <div class="card-body">
                 <?php if (session()->getFlashdata('message')): ?>
-                    <div class="alert alert-info">
-                        <?= session()->getFlashdata('message') ?>
+                    <div class="alert alert-danger">
+                        <?php if (is_array(session()->getFlashdata('message'))): ?>
+                            <?php foreach (session()->getFlashdata('message') as $error): ?>
+                                <div><?= $error ?></div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <?= session()->getFlashdata('message') ?>
+                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
                 <form action="<?= route_to('category_store') ?>" method="post">

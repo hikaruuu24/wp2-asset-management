@@ -61,6 +61,7 @@ $routes->put('maintenance/document/(:num)', 'MaintenanceController::uploadDocume
 
 // REPORT
 $routes->get('report-maintenance', 'ReportMaintenanceController::index', ['as' => 'report_list']);
+$routes->get('report-maintenance/pdf', 'ReportMaintenanceController::pdf', ['as' => 'report_maintenance_pdf']);
 
 // CATEGORY
 $routes->get('category', 'CategoryController::index', ['as' => 'category_list']);
